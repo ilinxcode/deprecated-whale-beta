@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from Robinhood import Robinhood
+from pyrh import Robinhood
 import redis
 import urllib
 import time
@@ -11,10 +11,11 @@ import getpass
 from . import lib
 from . import db
 
-my_trader = Robinhood()
+my_trader = False
 
 
 def login(who=False, force=False):
+    global my_trader
     if not who:
         who = db.user['email']
 
@@ -23,7 +24,7 @@ def login(who=False, force=False):
     if not token or force:
         password = getpass.getpass()
         try:
-            my_trader.login(username=who, password=password)
+            my_trader = Robinhood(username=who, password=password)
 
         except Exception as ex:
             raise ex

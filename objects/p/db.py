@@ -238,7 +238,7 @@ def connect(db_file=None):
     'c': conn.cursor()
   })
 
-  if db_file == 'db/trades.db' and _dbcount == 0:
+  if _dbcount == 0:
 
     for table, schema in list(_SCHEMA.items()):
       dfn = ','.join(["%s %s" % (key, klass) for key, klass in schema])

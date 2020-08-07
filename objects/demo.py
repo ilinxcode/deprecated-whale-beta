@@ -5,8 +5,8 @@ import sys
 import json
 import sys
 
-from . import robin
-from . import lib
+from p import robin
+from p import lib
 
 lib.upgrade()
 
